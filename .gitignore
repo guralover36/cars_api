@@ -1,1 +1,8 @@
 .venv
+__pycache__
+*.py[cod]
+__pycache__/
+carsapi/cars/migrations/0001_initial.py
+carsapi/db.sqlite3
+carsapi/carsapi/__pycache__/settings.cpython-312.pyc
+carsapi/carsapi/__pycache__/urls.cpython-312.pyc

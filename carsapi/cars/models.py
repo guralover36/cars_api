@@ -17,25 +17,22 @@ class Brand(models.Model):
 
 class Marka(models.Model):
     name = models.CharField(max_length=100)
-    age_of_issue = models.IntegerField(max_length=4)
+    age_of_issue = models.IntegerField()
     style = models.CharField(max_length=100)
 
 
 class Car(models.Model):
-    brand = models.OneToOneField(Brand, on_delete=models.CASCADE)
-    marka = models.OneToOneField(Marka, on_delete=models.CASCADE)
-    price = models.IntegerField(max_length=10)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    marka = models.ForeignKey(Marka, on_delete=models.CASCADE)
+    price = models.IntegerField()
     mileage = models.IntegerField()
     # change oe approve
-    exterior_color = models.JSONField(default=list)
-    interior_color = models.JSONField(default=list)
-    fuel_type = models.JSONField(default=list)
-    transmission = models.JSONField(default=list)
-    engine = models.CharField()
+    exterior_color = models.CharField(max_length=100)
+    interior_color = models.CharField(max_length=100)
+    fuel_type = models.CharField(max_length=100)
+    transmission = models.CharField(max_length=100)
+    engine = models.CharField(max_length=100)
     sale = models.BooleanField()
 
 
 
-admin_group, created = Group.objects.get_or_create(name='Administrators')
-registered_group, created = Group.objects.get_or_create(name='Registered Users')
-guest_group, created = Group.objects.get_or_create(name='Guest Users')
