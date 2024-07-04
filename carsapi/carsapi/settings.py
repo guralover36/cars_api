@@ -20,6 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# TODO: MOVE THIS TO ENVIRONMENT VARIABLE
 SECRET_KEY = 'django-insecure-p!3#0ff+_-6p-+fmvq&gi1k8faf15=gf4c13_kpbj)^rfdhx-='
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cars',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     'cars.backends.EmailOrUsernameModelBackend',
 #     'django.contrib.auth.backends.ModelBackend',
 # )
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # Other authentication classes as needed
+    ),
+}
+
+AUTH_USER_MODEL = 'cars.CustomUser'
+
+# APPEND_SLASH = False
